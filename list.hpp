@@ -8,7 +8,10 @@ class LinkedList {
 
     public:
         void all();
+        int get(int position);
+        void insert(int position, int value);
         void push(int value);
+        void del(int position);
 };
 
 #endif
