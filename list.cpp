@@ -52,10 +52,6 @@ int LinkedList::get(int position) {
 }
 
 void LinkedList::insert(int position, int value) {
-    /***
-    NEED FIX
-
-    
     Node *oldPointer = nullptr;
     Node *newNode = new Node;
     Node *item = head;
@@ -69,21 +65,21 @@ void LinkedList::insert(int position, int value) {
             item->next = newNode;
         }
         else if(aux == position) {
-            if(oldPointer == nullptr) {
-                if(head == nullptr) {
-                    head = newNode;
+            if(aux == 0) {
+                if(head != nullptr) {
+                    newNode->next = head;
                 }
                 else {
                     newNode->next = nullptr;
-
-                    break;
                 }
+
+                head = newNode;    
             }
             else {
-                (*newNode).next = oldPointer;
-
-                break;
+                newNode->next = oldPointer;
             }
+            
+            break;
         }
 
         if(item->next != nullptr) {
@@ -94,8 +90,6 @@ void LinkedList::insert(int position, int value) {
             break;
         }
     }
-
-    ***/
 }
 
 void LinkedList::push(int value) {

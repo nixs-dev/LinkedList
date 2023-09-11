@@ -4,7 +4,7 @@
 #define LINKEDLIST_H 
 
 class LinkedList {
-    Node *head;
+    Node *head = nullptr;
 
     public:
         void all();
