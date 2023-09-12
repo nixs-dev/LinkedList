@@ -3,14 +3,16 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H 
 
+template <typename T>
+
 class LinkedList {
-    Node *head = nullptr;
+    Node<T> *head = nullptr;
 
     public:
         void all();
-        int get(int position);
-        void insert(int position, int value);
-        void push(int value);
+        T get(int position);
+        void insert(int position, T value);
+        void push(T value);
         void del(int position);
 };
 

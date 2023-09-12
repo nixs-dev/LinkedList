@@ -3,12 +3,13 @@
 #include "list.hpp"
 
 
-void LinkedList::all() {
+template <typename T>
+void LinkedList<T>::all() {
     if(head == nullptr) {
         std::cout << "VAZIO";
     }
     else {
-        Node *item = head;
+        Node<T> *item = head;
 
         while(true) {
             std::cout << "VALOR: " << item->value << std::endl;
@@ -33,8 +34,9 @@ void LinkedList::all() {
     }
 }
 
-int LinkedList::get(int position) {
-    Node *item = head;
+template <typename T>
+T LinkedList<T>::get(int position) {
+    Node<T> *item = head;
     int aux = 0;
 
     while(true) {
@@ -43,18 +45,20 @@ int LinkedList::get(int position) {
         }
 
         if(item->next == nullptr) {
-            return -1;
+            throw std::runtime_error("OUT_OF_RANGE");
         }
         else {
             item = item->next;
+            aux++;
         }
     }
 }
 
-void LinkedList::insert(int position, int value) {
-    Node *oldPointer = nullptr;
-    Node *newNode = new Node;
-    Node *item = head;
+template <typename T>
+void LinkedList<T>::insert(int position, T value) {
+    Node<T> *oldPointer = nullptr;
+    Node<T> *newNode = new Node<T>;
+    Node<T> *item = head;
     int aux = 0;
 
     (*newNode).value = value;
@@ -92,8 +96,9 @@ void LinkedList::insert(int position, int value) {
     }
 }
 
-void LinkedList::push(int value) {
-    Node *node = new Node();
+template <typename T>
+void LinkedList<T>::push(T value) {
+    Node<T> *node = new Node<T>;
 
     (*node).value = value;
     (*node).next = nullptr;
@@ -102,7 +107,7 @@ void LinkedList::push(int value) {
         head = node;
     }
     else {
-        Node *item = head;
+        Node<T> *item = head;
 
         while(item->next != nullptr) {
             item = item->next;
@@ -112,11 +117,12 @@ void LinkedList::push(int value) {
     }
 }
 
-void LinkedList::del(int position) {
-    Node *nodeBefore = nullptr;
-    Node *nodeAfter = nullptr;
-    Node *node = nullptr;
-    Node *item = head;
+template <typename T>
+void LinkedList<T>::del(int position) {
+    Node<T> *nodeBefore = nullptr;
+    Node<T> *nodeAfter = nullptr;
+    Node<T> *node = nullptr;
+    Node<T> *item = head;
     int aux = 0;
 
     while(true) {
@@ -152,3 +158,8 @@ void LinkedList::del(int position) {
 
     delete node;
 }
+
+template class LinkedList<int>;
+template class LinkedList<char>;
+template class LinkedList<bool>;
+template class LinkedList<std::string>;

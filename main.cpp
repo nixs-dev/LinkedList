@@ -3,9 +3,11 @@
 
 
 int main() {
-    LinkedList list = LinkedList();
+    LinkedList<std::string> list = LinkedList<std::string>();
 
-    list.insert(0, 5);
+    list.push("assa");
+    list.push("ka");
+    list.push("dd");
 
     list.all();
 
